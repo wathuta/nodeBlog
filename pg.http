@@ -1,0 +1,89 @@
+GET http://localhost:3000/ HTTP/1.1
+
+###
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"feevsdcer",
+    "email":"wvdsvrfgea@gmail.com",
+    "password":"watcsdh"
+}
+
+###
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username":"whosdfeever",
+    "password":"wathuvdseew"
+}
+###
+PUT http://localhost:3000/api/user/615afea285088bd9d1aa2af0 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId" : "615afea285088bd9d1aa2af0",
+    "username":"ewsd",
+    "password":"wathuvdseew"
+}
+###
+DELETE http://localhost:3000/api/user/6131d7e27ce9ece9a3404bc7  HTTP/1.1
+
+###
+GET http://localhost:3000/api/user/615afea285088bd9d1aa2af0 HTTP/1.1
+
+###
+POST http://localhost:3000/api/post/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "title" : "the new post",
+    "desc" : "the new post",
+    "username":"jane",
+    "category":"posts"
+}
+
+###
+PUT http://localhost:3000/api/post/6133b53a20d22cd56d4723d1 HTTP/1.1
+Content-Type: application/json
+
+{   
+    "title" : "the  post",
+    "desc" : " post",
+    "username":"ewsd",
+    "category":"wathuvdseew"
+}
+###
+DELETE http://localhost:3000/api/post/6134ffc7e23b3d3d6ab41e89  HTTP/1.1
+Content-Type: application/json
+
+{   
+    "title" : "the  post",
+    "desc" : " post",
+    "username":"jane",
+    "category":"wathuvdseew"
+}
+
+###
+GET http://localhost:3000/api/post?cat=music HTTP/1.1
+ 
+#  {
+#      "username":"jane",
+#      "title":"the new post",
+#  }
+
+###
+POST http://localhost:3000/api/category/ HTTP/1.1
+Content-Type: application/json
+
+
+{
+    "name":"music"
+}
+###
+GET http://localhost:3000/api/category/ HTTP/1.1
+
+###
+POST http://localhost:3000/api/upload/ HTTP/1.1
+Content-Type: application/json
