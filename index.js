@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO,{
 app.use('/api/auth/',authentication)
 app.use('/api/user/',userRoute)
 app.use('/api/post/',PostRoute)
-app.use('/api/category/',CatRoute)
+app.use('/api/cat/',CatRoute)
 app.use('/api/upload/',ImageRoute)
 
-app.listen(3000,()=>{console.log("listening on port 3000");})
+app.listen(5000,()=>{console.log("listening on port 5000");})

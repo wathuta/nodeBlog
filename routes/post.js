@@ -12,7 +12,8 @@ router.post('/', async (req, res) => {
     }
 });
 router.put('/:id', async (req, res) => {
-    try {const post = await Post.findById(req.params.id)
+    try {
+        const post = await Post.findById(req.params.id)
         console.log(post);
         if (post.username === req.body.username) {
             try {
@@ -33,42 +34,57 @@ router.put('/:id', async (req, res) => {
     }
 });
 //to fix
-router.delete('/:id',async (req,res)=>{
-        try {
-            const post=await Post.findById(req.params.id)
-            console.log(post._doc);
-            if (post.username===req.body.username) {
-                try {
-                    await post.delete();
-                    res.status(200).json("post has been deleted")
-                } catch (error) {
-                    res.status(500).json(error)
-                }
-            }else{
-                res.status(401).json("you can only delete your posts")
+router.delete('/:id', async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id)
+        console.log(post._doc);
+        if (post.username === req.body.username) {
+            try {
+                await post.delete();
+                res.status(200).json("post has been deleted")
+            } catch (error) {
+                res.status(500).json(error)
             }
-        } catch (error) {
-            res.status(500).json(error)
+        } else {
+            res.status(401).json("you can only delete your posts")
         }
+    } catch (error) {
+        res.status(500).json(error)
+    }
 })
 
-router.get('/',async (req,res)=>{
-    const username=req.query.user;
-    const catName=req.query.cat;
+router.get('/', async (req, res) => {
+    const username = req.query.user;
+    const catName = req.query.cat;
     try {
-        console.log(catName);
         let postsRes;
-        if (username){
-            postsRes =await Post.find({username});
-        }else if (catName){
-            console.log(catName)
-            postsRes =await Post.find({category:{$in:[catName],},});
-        }else{
-            postsRes =await Post.find();
+        if (username) {
+            postsRes = await Post.find({
+                username
+            });
+        } else if (catName) {
+        console.log(catName);
+            postsRes = await Post.find({category:{$all:[catName]}});
+            console.log(postsRes)
+        } else {
+            postsRes = await Post.find();
         }
         res.status(200).json(postsRes);
     } catch (error) {
         res.status(500).json(error);
+    }
+})
+router.get('/:id', async (req, res) => {
+    try {
+        const post =await Post.findById(req.params.id)
+
+        if (!post) {
+            res.status(404).json("post not found")
+        } else {
+            res.status(200).json(post)
+        }
+    } catch (error) {
+        res.status(500).json(error)
     }
 })
 module.exports = router
