@@ -22,9 +22,7 @@ app.use('/api/post/',PostRoute)
 app.use('/api/cat/',CatRoute)
 app.use('/api/upload/',ImageRoute)
 
-const PORT =process.env.PORT || 3000;
-app.listen(PORT,()=>{
-    console.warn(`app listening on http://localhost:${PORT} `)
-})
+const PORT =process.env.PORT || 5000;
 
-app.listen(5000,()=>{console.log("listening on port 5000");})
+app.listen(PORT,()=>{console.log(`listening on port ${PORT}`);
+})
